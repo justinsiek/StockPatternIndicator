@@ -14,7 +14,13 @@ def get_stock_info():
     formatted_data = []
     for date, row in info.iterrows():
         timestamp = int(date.timestamp() * 1000)
-        tohlc = [timestamp, row['Open'], row['High'], row['Low'], row['Close']]
+        tohlc = [
+            timestamp, 
+            float(round(row['Open'], 2)), 
+            float(round(row['High'], 2)), 
+            float(round(row['Low'], 2)), 
+            float(round(row['Close'], 2))
+        ]
         formatted_data.append(tohlc)
     print(formatted_data)
     return jsonify(formatted_data)
