@@ -14,9 +14,9 @@ def get_stock_info():
     formatted_data = []
     for date, row in info.iterrows():
         timestamp = int(date.timestamp() * 1000)
-        ohlc = [row['Open'], row['High'], row['Low'], row['Close']]
-        formatted_data.append({'x': timestamp, 'y': ohlc})
-    
+        tohlc = [timestamp, row['Open'], row['High'], row['Low'], row['Close']]
+        formatted_data.append(tohlc)
+    print(formatted_data)
     return jsonify(formatted_data)
 
 

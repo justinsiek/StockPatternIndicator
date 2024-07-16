@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 
 function Index() {
   const [symbol, setSymbol] = useState('');
+
   interface StockInfo {
-    longName: string;
+    x: number;
+    y: number[];
   }
-  const [stockInfo, setStockInfo] = useState<StockInfo>({longName: ''});
+
+  const [stockInfo, setStockInfo] = useState<StockInfo[]>([]);
+
   const getStockInfo = () => {
     fetch(`http://localhost:8080/api/getsi?symbol=${symbol}`)
       .then(response => {
@@ -19,7 +23,7 @@ function Index() {
 
   return (
     <div className='flex flex-col justify-center items-center h-screen'>
-      {stockInfo.longName && <p>Stock Name: {stockInfo.longName}</p>}
+      
       <input
         className='border border-gray-400 p-2 w-1/4 rounded-lg mb-4'
         value={symbol}
